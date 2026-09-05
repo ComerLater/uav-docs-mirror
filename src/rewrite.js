@@ -23,12 +23,17 @@ function rewriteUrl(rawUrl, site) {
   }
 }
 
+function rewriteTextValue(text, site) {
+  const upstreamPattern = new RegExp(`https?:\\/\\/${site.upstreamHost.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\/)?`, 'gi');
+  return text.replace(upstreamPattern, `${site.publicPrefix}/`);
+}
+
 function rewriteHtmlFile(filePath, site) {
   const html = fs.readFileSync(filePath, 'utf8');
   const $ = cheerio.load(html);
 
-  $('[href], [src], [poster], [action]').each((_, el) => {
-    ['href', 'src', 'poster', 'action'].forEach((attr) => {
+  $('[href], [src], [poster], [action], [content]').each((_, el) => {
+    ['href', 'src', 'poster', 'action', 'content'].forEach((attr) => {
       const value = $(el).attr(attr);
       if (!value) return;
       const rewritten = rewriteUrl(value, site);
@@ -54,13 +59,13 @@ function rewriteHtmlFile(filePath, site) {
     $(el).attr('srcset', rewritten);
   });
 
-  return $.html();
+  // 对序列化结果做全文替换，兜底覆盖 meta content、内联 script/style、JSON-LD 等未单独处理的位置
+  return rewriteTextValue($.html(), site);
 }
 
 function rewriteStaticTextFile(filePath, site) {
   let text = fs.readFileSync(filePath, 'utf8');
-  const upstreamPattern = new RegExp(`https?:\\/\\/${site.upstreamHost.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\/)?`, 'gi');
-  text = text.replace(upstreamPattern, `${site.publicPrefix}/`);
+  text = rewriteTextValue(text, site);
   fs.writeFileSync(filePath, text);
 }
 

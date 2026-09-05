@@ -102,7 +102,7 @@ async function cloneOrPullRepo(site) {
     if (sparseDirs && sparseDirs.length) {
       console.log(`[info] sparse-cloning ${site.repoUrl} into ${repoDir} (dirs: ${sparseDirs.join(', ')})`);
       runCommand(`git clone --depth 1 --filter=blob:none --sparse ${site.repoUrl} "${repoDir}"`, process.cwd());
-      runCommand(`git sparse-checkout set ${sparseDirs.join(' ')}`, repoDir);
+      runCommand(`git sparse-checkout set --no-cone ${sparseDirs.join(' ')}`, repoDir);
     } else {
       console.log(`[info] cloning ${site.repoUrl} into ${repoDir}`);
       runCommand(`git clone --depth 1 ${site.repoUrl} "${repoDir}"`, process.cwd());

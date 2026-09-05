@@ -8,8 +8,8 @@ module.exports = [
     repoUrl: 'https://github.com/PX4/PX4-Autopilot.git',
     sparseDirs: ['docs'],
     buildCommands: [
-      'cd docs && yarn install',
-      'cd docs && yarn docs:build'
+      'cd docs && yarn install --frozen-lockfile',
+      'cd docs && npm run docs:build_ubuntu'
     ],
     allowedPathPrefixes: ['/', '/en/', '/zh/'],
     ignorePatterns: [/\/api\//i, /utm_/i, /google-analytics/i],
@@ -26,8 +26,8 @@ module.exports = [
     sourceUrl: 'https://mavlink.io/',
     repoUrl: 'https://github.com/mavlink/mavlink-devguide.git',
     buildCommands: [
-      'yarn install',
-      'yarn docs:build'
+      'yarn install --frozen-lockfile',
+      'npm run docs:build_ubuntu'
     ],
     allowedPathPrefixes: ['/', '/en/', '/docs/'],
     ignorePatterns: [/\/api\//i, /utm_/i],
@@ -45,7 +45,7 @@ module.exports = [
     repoUrl: 'https://github.com/mavlink/qgroundcontrol.git',
     sparseDirs: ['docs', 'package.json', 'package-lock.json'],
     buildCommands: [
-      'npm install',
+      'npm ci',
       'npm run docs:build'
     ],
     allowedPathPrefixes: ['/', '/en/', '/zh/'],
