@@ -115,6 +115,26 @@ async function cloneOrPullRepo(site) {
   return repoDir;
 }
 
+function fixTabsSyntax(repoPath) {
+  // 上游非英语翻译（ko/uk 等）的 tabs 语法少了空格（`:::tab` 应为 `::: tab`），
+  // 会导致 vue3-tabs-component 在 SSR 渲染时 inject tabsProvider 失败。这里统一修正。
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(p);
+      } else if (entry.name.endsWith('.md')) {
+        const text = fs.readFileSync(p, 'utf8');
+        const fixed = text.replace(/^(\s*:+)(tab)(?=\s|$)/gm, '$1 $2');
+        if (fixed !== text) {
+          fs.writeFileSync(p, fixed);
+        }
+      }
+    }
+  }
+  walk(repoPath);
+}
+
 async function runBuild(site, repoPath) {
   for (const command of site.buildCommands) {
     console.log(`[build] ${site.name}: ${command}`);
@@ -131,5 +151,6 @@ module.exports = {
   detectUpdates,
   cloneOrPullRepo,
   runBuild,
-  runCommand
+  runCommand,
+  fixTabsSyntax
 };

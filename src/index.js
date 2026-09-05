@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sites = require('../config/sites');
 const { rewriteBuiltStaticDir, validateSite } = require('./rewrite');
-const { detectUpdates, cloneOrPullRepo, runBuild, updateManifest, runCommand } = require('./utils');
+const { detectUpdates, cloneOrPullRepo, runBuild, updateManifest, runCommand, fixTabsSyntax } = require('./utils');
 
 function ensureOutputDir(site) {
   fs.mkdirSync(site.outputDir, { recursive: true });
@@ -165,6 +165,9 @@ async function buildSite(site, sha, { skipDeploy = false } = {}) {
     console.log(`[skip] ${site.name}: GitHub sync disabled in local debug mode`);
     return false;
   }
+
+  console.log(`[start] ${site.name}: fix upstream tabs syntax`);
+  fixTabsSyntax(repoPath);
 
   console.log(`[start] ${site.name}: run build`);
   await runBuild(site, repoPath);
