@@ -223,20 +223,20 @@ async function detectAll(targets) {
   return { updates, anyChanged };
 }
 
-async function runSites(siteFilter, { skipDeploy = false } = {}) {
+async function runSites(siteFilter, { skipDeploy = false, force = false } = {}) {
   const targets = siteFilter
     ? sites.filter((site) => site.name === siteFilter || site.publicPrefix === `/${siteFilter}`)
     : sites;
 
   const { updates, anyChanged } = await detectAll(targets);
 
-  if (!anyChanged) {
+  if (!force && !anyChanged) {
     console.log('[skip] no upstream change detected, nothing to build');
     return;
   }
 
   // gh-pages 采用 force 覆盖推送，dist/ 必须是完整产物，因此任一站点更新即全量重建
-  console.log('[start] upstream change detected, full rebuild');
+  console.log(force ? '[start] forced rebuild (manifest check skipped)' : '[start] upstream change detected, full rebuild');
   for (const site of targets) {
     await buildSite(site, updates[site.name].sha, { skipDeploy });
   }
@@ -249,6 +249,7 @@ async function main() {
   const args = process.argv.slice(2);
   const watchMode = args.includes('--watch') || args.includes('-w');
   const skipDeploy = args.includes('--no-deploy');
+  const force = args.includes('--force') || process.env.FORCE_BUILD === 'true';
   const siteFilter = args.find((arg) => !arg.startsWith('-'));
 
   if (watchMode) {
@@ -256,7 +257,7 @@ async function main() {
     return;
   }
 
-  await runSites(siteFilter, { skipDeploy });
+  await runSites(siteFilter, { skipDeploy, force });
 }
 
 if (require.main === module) {

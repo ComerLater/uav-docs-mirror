@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '17 3 * * *' # 每天 UTC 03:17（可调）
   workflow_dispatch:
+    inputs:
+      force:
+        description: '强制重建所有站点（忽略 manifest 是否变化）'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -35,6 +40,7 @@ jobs:
         run: node src/index.js
         env:
           SKIP_REWRITE: 'true'
+          FORCE_BUILD: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force == 'true' }}
 
       - name: Commit manifest (main)
         run: |
