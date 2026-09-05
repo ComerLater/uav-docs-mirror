@@ -198,3 +198,7 @@ npm run check
 - 绝对 URL 的修正统一在构建后执行（`src/rewrite.js`）。
 - PX4-Autopilot 与 qgroundcontrol 仓库较大，已用 sparse-checkout 只拉取 `docs` 目录，避免全量克隆。
 - 改动 `main` 分支不会触发 EdgeOne 部署，只有 `gh-pages` 分支 push 才触发。
+
+## 许可证
+
+[BSD-3-Clause](LICENSE)
