@@ -1,6 +1,11 @@
 name: Sync Docs
 
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'manifest.json'
   schedule:
     - cron: '17 3 * * *' # 每天 UTC 03:17（可调）
   workflow_dispatch:
