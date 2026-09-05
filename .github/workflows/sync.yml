@@ -33,6 +33,8 @@ jobs:
 
       - name: Sync upstream docs
         run: node src/index.js
+        env:
+          SKIP_REWRITE: 'true'
 
       - name: Commit manifest (main)
         run: |

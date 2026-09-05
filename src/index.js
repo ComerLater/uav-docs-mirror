@@ -180,14 +180,20 @@ async function buildSite(site, sha, { skipDeploy = false } = {}) {
 
   ensureOutputDir(site);
 
-  console.log(`[start] ${site.name}: rewrite absolute URLs`);
-  rewriteBuiltStaticDir(site, buildDir, site.outputDir);
+  if (process.env.SKIP_REWRITE === 'true') {
+    // 暂时跳过 URL 重写，直接复制构建产物（跑通链路阶段用）
+    console.log(`[start] ${site.name}: copy build output (rewrite skipped)`);
+    copyDirectory(buildDir, site.outputDir);
+  } else {
+    console.log(`[start] ${site.name}: rewrite absolute URLs`);
+    rewriteBuiltStaticDir(site, buildDir, site.outputDir);
 
-  console.log(`[start] ${site.name}: validate output`);
-  const ok = validateSite(site);
-  if (!ok) {
-    console.log(`[fail] ${site.name}: validation failed`);
-    return false;
+    console.log(`[start] ${site.name}: validate output`);
+    const ok = validateSite(site);
+    if (!ok) {
+      console.log(`[fail] ${site.name}: validation failed`);
+      return false;
+    }
   }
 
   if (skipDeploy) {
