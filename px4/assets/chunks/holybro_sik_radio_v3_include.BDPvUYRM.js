@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/holybro_sik_radio_v3.CaUC-Eeo.png",_="/px4_user_guide/assets/holybro_sik_telemetry_label.DHxAty-V.jpg",e="/px4_user_guide/assets/holybro_sik_radio_v3_include.B8CfuTaT.png";export{s as _,_ as a,e as b};

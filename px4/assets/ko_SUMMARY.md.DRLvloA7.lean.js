@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as l,al as r}from"./chunks/framework.7vp1BMOE.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"ko/SUMMARY.md","filePath":"ko/SUMMARY.md"}'),o={name:"ko/SUMMARY.md"};function t(s,e,n,_,f,h){return a(),l("div",null,[...e[0]||(e[0]=[r("",1)])])}const m=i(o,[["render",t]]);export{d as __pageData,m as default};

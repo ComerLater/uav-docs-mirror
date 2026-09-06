@@ -1,0 +1,1 @@
+const _="/px4_user_guide/assets/fun_cub_vtol_complete.CNrlHtjF.jpg",s="/px4_user_guide/assets/fun_cub_aluminium_frame_for_vtol.DawmrFYI.jpg",u="/px4_user_guide/assets/fun_cub_aluminium_frame_for_vtol_mounted.DTXV5Ub0.jpg";export{_,s as a,u as b};

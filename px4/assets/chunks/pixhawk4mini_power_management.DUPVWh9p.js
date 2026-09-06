@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/pm06v2_pm06v2-14s.ooK60RkH.jpg",_="/px4_user_guide/assets/pm06_pin_map.HoVZn_l_.jpg",p="/px4_user_guide/assets/pixhawk4mini_power_management.B8W7VvL1.png";export{s as _,_ as a,p as b};
