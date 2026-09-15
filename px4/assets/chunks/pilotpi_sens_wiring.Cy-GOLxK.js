@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/hardware-pilotpi4b.o4v4ky5c.png",p="/px4_user_guide/assets/pilotpi_pwr_wiring.Dm7UrJob.png",_="/px4_user_guide/assets/pilotpi_sens_wiring.CQDwso65.png";export{s as _,p as a,_ as b};
