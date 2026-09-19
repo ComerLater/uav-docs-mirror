@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/pixhawk6x_standard_set.BgazLlC8.jpg",_="/px4_user_guide/assets/pixhawk6x_mini_set.B5V_3yMo.jpg",e="/px4_user_guide/assets/pixhawk6x_vehicle_front1.DYfARAhI.jpg";export{s as _,_ as a,e as b};
