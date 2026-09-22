@@ -1,14 +1,14 @@
 {
   "px4": {
-    "sha": "2fc441493eb887199c279e2eff990f3f4cd0deef",
-    "updatedAt": "2026-09-21T09:14:38.690Z"
+    "sha": "f90b40d61e56405513dfcd8e194287ac60d3a6ae",
+    "updatedAt": "2026-09-22T08:51:34.385Z"
   },
   "mavlink": {
-    "sha": "807b248df19bbbef3c8e07b5e6e9cbb52d6d7f2c",
-    "updatedAt": "2026-09-21T09:16:51.579Z"
+    "sha": "ca724cecbaad04bf26be682b59951e7b654cf44b",
+    "updatedAt": "2026-09-22T08:52:42.180Z"
   },
   "qgroundcontrol": {
-    "sha": "6f1f4368de08fe093291c63ac7f012c797aaf3c4",
-    "updatedAt": "2026-09-21T09:17:10.944Z"
+    "sha": "2b7e55dea40ed88d879029dc6871674d78e666f3",
+    "updatedAt": "2026-09-22T08:53:05.286Z"
   }
 }
