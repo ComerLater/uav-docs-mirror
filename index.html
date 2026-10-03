@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档导航</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f6f8;
+      color: #1f2328;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    .sub { color: #6a737d; margin-bottom: 32px; font-size: 15px; }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 720px;
+      width: 100%;
+      justify-content: center;
+    }
+    .card {
+      flex: 1 1 200px;
+      background: #fff;
+      border: 1px solid #e1e4e8;
+      border-radius: 10px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .15s ease, transform .15s ease;
+    }
+    .card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .card h2 { font-size: 18px; margin-bottom: 6px; }
+    .card p { color: #6a737d; font-size: 14px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <h1>文档导航</h1>
+  <p class="sub">选择一个文档站点</p>
+  <div class="grid">
+        <a class="card" href="/px4/"><h2>PX4 用户指南</h2><p>docs.px4.io</p></a>
+        <a class="card" href="/mavlink/"><h2>MAVLink 开发者指南</h2><p>mavlink.io</p></a>
+        <a class="card" href="/qgroundcontrol/"><h2>QGroundControl 指南</h2><p>docs.qgroundcontrol.com</p></a>
+  </div>
+</body>
+</html>

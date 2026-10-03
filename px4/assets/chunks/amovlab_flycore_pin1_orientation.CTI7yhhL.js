@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/amovlab_flycore_product.DdcSI6_2.jpg",_="/px4_user_guide/assets/amovlab_flycore_pinout.DkE7Pbs3.jpg",o="/px4_user_guide/assets/amovlab_flycore_pin1_orientation.cI_xw1cn.png";export{s as _,_ as a,o as b};
