@@ -1,0 +1,1 @@
+const s="/px4_user_guide/assets/x25-mega.BXJYDhQI.png",_="/px4_user_guide/assets/x25-mega_size.CjpqHYud.png",e="/px4_user_guide/assets/x25-mega_pinouts_01.xWKr6kdH.png",p="/px4_user_guide/assets/x25-mega_pinouts_02.1V-CZD9s.png";export{s as _,_ as a,e as b,p as c};
